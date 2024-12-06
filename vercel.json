@@ -1,23 +1,13 @@
 {
-    "version": 2,
-    "builds": [
-      {
+    "builds": [{
         "src": "Food_Project/wsgi.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "staticfiles/",
-        "use": "@vercel/static"
-      }
-    ],
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
     "routes": [
-      {
-        "src": "/static/(.*)",
-        "dest": "/static/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "Food_Project/wsgi.py"
-      }
+        {
+            "src": "/(.*)",
+            "dest": "Food_Project/wsgi.py"
+        }
     ]
 }
